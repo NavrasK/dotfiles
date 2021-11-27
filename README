@@ -1,3 +1,7 @@
 # dotfiles
 Personal dotfiles I'm testing / using
+Currently using neovim
+
+To set up windows simlink run:
+mklink /h C:/Users/xxx/AppData/Local/nvim/init.vim Path/To/init.vim
 
