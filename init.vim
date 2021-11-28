@@ -29,7 +29,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
-Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 call plug#end()
 
