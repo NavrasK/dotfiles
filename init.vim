@@ -30,6 +30,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'preservim/nerdtree'
 call plug#end()
 
 colorscheme onehalfdark
@@ -42,9 +43,10 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <F5> :UndotreeToggle<cr>
-
-" Removes word under cursor, can replace it, press . to replace more instances
-"nnoremap <leader>re *``cgn
+nnoremap <leader>n :NERDTreeFocus<cr>
+nnoremap <C-n> :NERDTree<cr>
+nnoremap <C-t> :NERDTreeToggle<cr>
+nnoremap <C-f> :NERDTreeFind<cr>
 
 " Save undo breakpoints in insert mode with these characters
 inoremap , ,<c-g>u
