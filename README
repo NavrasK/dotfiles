@@ -2,6 +2,6 @@
 Personal dotfiles I'm testing / using
 Currently using neovim
 
-To set up windows simlink run:
+To set up windows simlink run the following in CMD:
 mklink /h C:/Users/xxx/AppData/Local/nvim/init.vim Path/To/init.vim
-
+mklink /h C:/Users/xxx/.vim/plugged/telescope.nvim/lua/telescope/mappings.lua Path/To/telescope_mappings.lua
