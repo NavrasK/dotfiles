@@ -37,6 +37,7 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
@@ -44,6 +45,9 @@ call plug#end()
 
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
+command LOVE !love .
+autocmd TermOpen * startinsert
+nnoremap <leader>r :source $MYVIMRC<cr>
 
 " {{{ Undo InsertMode breakpoints
 " Save undo breakpoints in insert mode with these characters
@@ -67,7 +71,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
-inoremap <C-x> :Telescope select_vertical<cr>
 
 " {{{ COC settings
 " Use tab for trigger completion with characters ahead and navigate.
@@ -83,6 +86,15 @@ function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+function! CocToggle()
+	if g:coc_enabled
+		CocDisable
+	else
+		CocEnable
+	endif
+endfunction
+command! CocToggle :call CocToggle()
 
 nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> [e <Plug>(coc-diagnostic-prev)
