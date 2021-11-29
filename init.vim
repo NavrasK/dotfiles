@@ -47,7 +47,17 @@ colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
 command LOVE !love .
 autocmd TermOpen * startinsert
+vnoremap <leader>p "_dP
 nnoremap <leader>r :source $MYVIMRC<cr>
+
+" {{{ Move lines up / down in V, I, and N mode
+nnoremap <A-j> :m .+1<cr>==
+nnoremap <A-k> :m .-2<cr>==
+inoremap <A-j> <esc>:m .+1<cr>==gi
+inoremap <A-k> <esc>:m .-2<cr>==gi
+vnoremap <A-j> :m '>+1<cr>gv=gv
+vnoremap <A-k> :m '<-2<cr>gv=gv
+" }}}
 
 " {{{ Undo InsertMode breakpoints
 " Save undo breakpoints in insert mode with these characters
@@ -72,7 +82,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
 
-" {{{ COC settings
+" {{{ COC completion settings
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
