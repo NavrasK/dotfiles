@@ -2,6 +2,14 @@
 Personal dotfiles I'm testing / using
 Currently using neovim
 
-To set up windows simlink run the following in CMD:
+## Symlink in Windows (CMD):
 mklink /h C:/Users/xxx/AppData/Local/nvim/init.vim Path/To/init.vim
 mklink /h C:/Users/xxx/.vim/plugged/telescope.nvim/lua/telescope/mappings.lua Path/To/telescope_mappings.lua
+
+## Symlink in Linux (WSL):
+ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
+
+### Add to .bashrc
+source ~/dotfiles/please.bash
+source ~/dotfiles/aka.bash
+
