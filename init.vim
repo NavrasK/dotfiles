@@ -21,12 +21,14 @@ set termguicolors
 set scrolloff=12
 set noshowmode
 set completeopt=menuone,noinsert,noselect
+set wildmenu
 set colorcolumn=80
 set signcolumn=number
 set splitright
 set cmdheight=2
 set updatetime=300
 set foldmethod=marker
+set path+=**
 
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
