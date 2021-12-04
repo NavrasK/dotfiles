@@ -28,6 +28,7 @@ set splitright
 set cmdheight=2
 set updatetime=300
 set foldmethod=marker
+set foldopen-=block
 set path+=**
 
 call plug#begin("~/.vim/plugged")
@@ -43,10 +44,13 @@ Plug 'tpope/vim-dispatch'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
+let g:rainbow_active=1
 command LOVE !love .
 autocmd TermOpen * startinsert
 vnoremap <leader>p "_dP
