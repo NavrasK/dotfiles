@@ -53,8 +53,11 @@ let g:airline_theme='onehalfdark'
 let g:rainbow_active=1
 command LOVE !love .
 autocmd TermOpen * startinsert
-vnoremap <leader>p "_dP
+" Pressing p in visual mode replaces selected text with " buffer
+vnoremap <leader>p "_dP 
 nnoremap <leader>r :source $MYVIMRC<cr>
+" Escape escapes terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 " {{{ Move lines up / down in V, I, and N mode
 nnoremap <A-j> :m .+1<cr>==
