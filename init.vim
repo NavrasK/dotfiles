@@ -31,6 +31,8 @@ set foldmethod=marker
 set foldopen-=block
 set path+=**
 
+command LOVE !love .
+
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
 Plug 'sonph/onehalf', {'rtp': 'vim'}
@@ -46,12 +48,15 @@ Plug 'preservim/nerdtree'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
+Plug 'szw/vim-maximizer'
+Plug 'puremourning/vimspector'
+Plug 'skywind3000/vim-quickui'
 call plug#end()
 
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
 let g:rainbow_active=1
-command LOVE !love .
+let g:quickui_color_scheme='papercol dark'
 autocmd TermOpen * startinsert
 " Pressing p in visual mode replaces selected text with " buffer
 vnoremap <leader>p "_dP 
@@ -83,6 +88,7 @@ inoremap } }<c-g>u
 inoremap <cr> <cr><c-g>u
 " }}}
 
+nnoremap <leader>m :MaximizerToggle!<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>

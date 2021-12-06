@@ -1,5 +1,7 @@
 # Bookmarks
 $dot = "C:/Users/trail/dotfiles/"
+$bytepath = "D:/Games/LoveTests/bytepath/"
+$c350 = "D:/Academic/CMPUT350/Valkyrie/build/bin"
 
 function NVimHereOrThere ($Target = ".") {
 	nvim $Target
@@ -19,4 +21,5 @@ function TouchySubject ($NewFileName) {
 	}
 }
 
-Set-Alias -Name touch -Value TouchySubject
+Set-Alias -Name touch -Value TouchySubject
+
