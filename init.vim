@@ -12,7 +12,7 @@ set smartindent
 set nowrap
 set noswapfile
 set backupdir-=.'
-set undodir=!/.vim/undodir
+set undodir="~/.vim/undo-dir"
 set undofile
 set incsearch
 set ignorecase
@@ -30,6 +30,7 @@ set updatetime=300
 set foldmethod=marker
 set foldopen-=block
 set path+=**
+set list lcs=tab:\ \ ,trail:×
 
 command LOVE !love .
 
@@ -50,7 +51,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'szw/vim-maximizer'
 Plug 'puremourning/vimspector'
-Plug 'skywind3000/vim-quickui'
+Plug 'vimwiki/vimwiki'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 colorscheme onehalfdark
@@ -59,7 +62,7 @@ let g:rainbow_active=1
 let g:quickui_color_scheme='papercol dark'
 autocmd TermOpen * startinsert
 " Pressing p in visual mode replaces selected text with " buffer
-vnoremap <leader>p "_dP 
+vnoremap <leader>p "_dP
 nnoremap <leader>r :source $MYVIMRC<cr>
 " Escape escapes terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -96,6 +99,27 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
+
+" {{{ Indent_blankline settings
+lua << EOF
+require("indent_blankline").setup {
+	use_treesitter = true,
+	space_char_blankline = " ",
+	show_current_context = true,
+}
+EOF
+" }}}
+
+" {{{ Treesitter / rainbow settings
+lua << EOF
+require("nvim-treesitter.configs").setup {
+	rainbow = {
+		enable = true,
+		extended_mode = true,
+	}
+}
+EOF
+" }}}
 
 " {{{ COC completion settings
 " Use tab for trigger completion with characters ahead and navigate.

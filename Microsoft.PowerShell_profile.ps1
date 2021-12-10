@@ -2,6 +2,7 @@
 $dot = "C:/Users/trail/dotfiles/"
 $bytepath = "D:/Games/LoveTests/bytepath/"
 $c350 = "D:/Academic/CMPUT350/Valkyrie/build/bin"
+$notes = "D:/Notes/PersonalNotes/"
 
 function NVimHereOrThere ($Target = ".") {
 	nvim $Target
