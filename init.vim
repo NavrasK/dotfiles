@@ -26,24 +26,30 @@ set colorcolumn=80
 set signcolumn=number
 set splitright
 set cmdheight=2
-set updatetime=300
+set updatetime=100
 set foldmethod=marker
 set foldopen-=block
 set path+=**
 set list lcs=tab:\ \ ,trail:×
+set mouse+=a
 
 command LOVE !love .
 
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sonph/onehalf', {'rtp': 'vim'}
+Plug 'gruvbox-community/gruvbox'
+Plug 'bluz71/vim-moonfly-colors'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-repeat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
@@ -54,18 +60,32 @@ Plug 'puremourning/vimspector'
 Plug 'vimwiki/vimwiki'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'psliwka/vim-smoothie'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'sindrets/winshift.nvim'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'folke/which-key.nvim'
 call plug#end()
 
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+" Colour options: onehalfdark, moonfly, gruvbox
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
+
+" Activate rainbow parentheses and hex colorizer
 let g:rainbow_active=1
-let g:quickui_color_scheme='papercol dark'
+lua require'colorizer'.setup()
+" Opening terminal window enters insert mode
 autocmd TermOpen * startinsert
-" Pressing p in visual mode replaces selected text with " buffer
-vnoremap <leader>p "_dP
-nnoremap <leader>r :source $MYVIMRC<cr>
 " Escape escapes terminal mode
 tnoremap <Esc> <C-\><C-n>
+" Pressing p in visual mode replaces selected text with " buffer
+vnoremap <leader>p "_dP
+" Refresh current window with latest init.vim
+nnoremap <leader>r :source $MYVIMRC<cr>
+" Ctrl-W + m moves around the current window with HJKL
+nnoremap <C-w><C-m> <cmd>WinShift<cr>
+nnoremap <C-w>m <cmd>WinShift<cr>
 
 " {{{ Move lines up / down in V, I, and N mode
 nnoremap <A-j> :m .+1<cr>==
@@ -74,6 +94,11 @@ inoremap <A-j> <esc>:m .+1<cr>==gi
 inoremap <A-k> <esc>:m .-2<cr>==gi
 vnoremap <A-j> :m '>+1<cr>gv=gv
 vnoremap <A-k> :m '<-2<cr>gv=gv
+
+nnoremap <A-h> <<
+nnoremap <A-l> >>
+vnoremap <A-h> <gv
+vnoremap <A-l> >gv
 " }}}
 
 " {{{ Undo InsertMode breakpoints
@@ -100,13 +125,27 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
 
-" {{{ Indent_blankline settings
+" {{{ Heresy
+nnoremap <leader>fw :w<cr>
+nnoremap <LeftMouse> <LeftMouse><esc>
+inoremap <LeftMouse> <LeftMouse><esc>
+nnoremap <RightMouse> <LeftMouse>i
+inoremap <RightMouse> <esc><LeftMouse>i
+" }}}
+
+" {{{ Indent blankline settings
 lua << EOF
 require("indent_blankline").setup {
 	use_treesitter = true,
 	space_char_blankline = " ",
 	show_current_context = true,
 }
+EOF
+" }}}
+
+" {{{ WhichKey Settings
+lua << EOF
+require("which-key").setup {}
 EOF
 " }}}
 
@@ -150,4 +189,7 @@ nnoremap <silent> [e <Plug>(coc-diagnostic-prev)
 nnoremap <silent> ]e <Plug>(coc-diagnostic-next)
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " }}}
+
+" Activate safe mode for exrc
+set secure
 
