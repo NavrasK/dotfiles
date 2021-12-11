@@ -35,6 +35,7 @@ set mouse+=a
 
 command LOVE !love .
 
+" {{{ VimPlugs
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -67,18 +68,25 @@ Plug 'sindrets/winshift.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'folke/which-key.nvim'
 call plug#end()
+" }}}
 
 " Colour options: onehalfdark, moonfly, gruvbox
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+set showtabline=1
 
-" Activate rainbow parentheses and hex colorizer
-let g:rainbow_active=1
-lua require'colorizer'.setup()
 " Opening terminal window enters insert mode
 autocmd TermOpen * startinsert
 " Escape escapes terminal mode
 tnoremap <Esc> <C-\><C-n>
+" Quick open terminal as vertical split
+nnoremap <leader>ot <C-w>v:term<cr>
+
+" Activate rainbow parentheses and hex colorizer
+let g:rainbow_active=1
+lua require'colorizer'.setup()
 " Pressing p in visual mode replaces selected text with " buffer
 vnoremap <leader>p "_dP
 " Refresh current window with latest init.vim
@@ -145,8 +153,13 @@ EOF
 
 " {{{ WhichKey Settings
 lua << EOF
-require("which-key").setup {}
+require("which-key").setup {
+	plugins = {
+		spelling = {enabled = true}
+	}
+}
 EOF
+let g:whichkey#plugins#spelling#enabled='true'
 " }}}
 
 " {{{ Treesitter / rainbow settings
