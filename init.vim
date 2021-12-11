@@ -5,7 +5,7 @@ set relativenumber
 set number
 set nohlsearch
 set hidden
-set noerrorbells
+set errorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set smartindent
@@ -70,12 +70,12 @@ Plug 'folke/which-key.nvim'
 call plug#end()
 " }}}
 
-" Colour options: onehalfdark, moonfly, gruvbox
+" Colour options: gruvbox, onehalfdark, moonfly
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
-set showtabline=1
+set showtabline=2
 
 " Opening terminal window enters insert mode
 autocmd TermOpen * startinsert
@@ -133,7 +133,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
 
-" {{{ Heresy
+" {{{ Mouse Control / Heresy
 nnoremap <leader>fw :w<cr>
 nnoremap <LeftMouse> <LeftMouse><esc>
 inoremap <LeftMouse> <LeftMouse><esc>
@@ -159,7 +159,6 @@ require("which-key").setup {
 	}
 }
 EOF
-let g:whichkey#plugins#spelling#enabled='true'
 " }}}
 
 " {{{ Treesitter / rainbow settings
