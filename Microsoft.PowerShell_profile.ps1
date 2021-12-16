@@ -9,6 +9,7 @@ function NVimHereOrThere ($Target = ".") {
 }
 
 Set-Alias -Name vim -Value NVimHereOrThere
+Set-Alias -Name v -Value NVimHereOrThere
 
 function TouchySubject ($NewFileName) {
 	if ($NewFileName) {
