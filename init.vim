@@ -23,7 +23,7 @@ set noshowmode
 set completeopt=menuone,noinsert,noselect
 set wildmenu
 set colorcolumn=80
-set signcolumn=number
+set signcolumn=yes:1
 set splitright
 set cmdheight=2
 set updatetime=100
@@ -42,6 +42,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sonph/onehalf', {'rtp': 'vim'}
 Plug 'gruvbox-community/gruvbox'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
@@ -67,6 +68,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'sindrets/winshift.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'folke/which-key.nvim'
+Plug 'jvgrootveld/telescope-zoxide'
+Plug 'AckslD/nvim-neoclip.lua'
 call plug#end()
 " }}}
 
@@ -77,8 +80,8 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 set showtabline=2
 
-" Opening terminal window enters insert mode
-autocmd TermOpen * startinsert
+" Opening terminal window enters insert mode (note: disabled due to issues with coc-powershell)
+" autocmd TermOpen * startinsert
 " Escape escapes terminal mode
 tnoremap <Esc> <C-\><C-n>
 " Quick open terminal as vertical split
@@ -86,7 +89,7 @@ nnoremap <leader>ot <C-w>v:term<cr>
 
 " Activate rainbow parentheses and hex colorizer
 let g:rainbow_active=1
-lua require'colorizer'.setup()
+lua require('colorizer').setup()
 " Pressing p in visual mode replaces selected text with " buffer
 vnoremap <leader>p "_dP
 " Refresh current window with latest init.vim
@@ -94,6 +97,11 @@ nnoremap <leader>r :source $MYVIMRC<cr>
 " Ctrl-W + m moves around the current window with HJKL
 nnoremap <C-w><C-m> <cmd>WinShift<cr>
 nnoremap <C-w>m <cmd>WinShift<cr>
+" Leader m toggles maximize for current window
+nnoremap <leader>m :MaximizerToggle!<cr>
+" Toggle open file / undo manager
+nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <C-n> :NERDTreeToggle<cr>
 
 " {{{ Move lines up / down in V, I, and N mode
 nnoremap <A-j> :m .+1<cr>==
@@ -124,21 +132,24 @@ inoremap } }<c-g>u
 inoremap <cr> <cr><c-g>u
 " }}}
 
-nnoremap <leader>m :MaximizerToggle!<cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-nnoremap <F5> :UndotreeToggle<cr>
-nnoremap <C-n> :NERDTreeToggle<cr>
-
 " {{{ Mouse Control / Heresy
 nnoremap <leader>fw :w<cr>
 nnoremap <LeftMouse> <LeftMouse><esc>
 inoremap <LeftMouse> <LeftMouse><esc>
 nnoremap <RightMouse> <LeftMouse>i
 inoremap <RightMouse> <esc><LeftMouse>i
+" }}}
+
+" {{{ Telescope settings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+lua require('neoclip').setup()
+lua require('telescope').load_extension('neoclip')
+nnoremap <leader>p <cmd>Telescope neoclip<cr>
+lua require('telescope').load_extension('zoxide')
+nnoremap <leader>cd <cmd>Telescope zoxide list<cr>
 " }}}
 
 " {{{ Indent blankline settings

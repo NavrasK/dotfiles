@@ -24,3 +24,21 @@ function TouchySubject ($NewFileName) {
 
 Set-Alias -Name touch -Value TouchySubject
 
+# Load plugins
+
+# Zoxide
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook powershell | Out-String)
+})
+
+# Oh My Posh prompt
+oh-my-posh --init --shell pwsh --config ~/dotfiles/trail_poshtheme.json | Invoke-Expression
+Import-Module -Name Terminal-Icons
+
+# PSReadLine autocomplete
+Import-Module -Name PSReadLine
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+

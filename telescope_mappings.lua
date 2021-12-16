@@ -18,8 +18,8 @@ mappings.default_mappings = config.values.default_mappings
       ["<Up>"] = actions.move_selection_previous,
 
       ["<CR>"] = actions.select_default,
-      ["<C-v>"] = actions.select_horizontal,
-      ["<C-s>"] = actions.select_vertical,
+      ["<C-s>"] = actions.select_horizontal,
+      ["<C-v>"] = actions.select_vertical,
       ["<C-t>"] = actions.select_tab,
 
       ["<C-u>"] = actions.preview_scrolling_up,

@@ -2,4 +2,5 @@
 	"Lua.diagnostics.disable": [
 		"redundant-parameter"
 	]
+	"powershell.integratedConsole.showOnStartup": false
 }
