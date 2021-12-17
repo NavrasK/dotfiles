@@ -33,8 +33,8 @@
 					"properties": {
 						"prefix": "   ",
 						"home_icon": "~",
-						"folder_separator_icon": " \uE0b1 ",
-						"style": "folder"
+						"folder_separator_icon": " \ue216 ",
+						"style": "letter"
 					}
 				},
 				{
@@ -237,7 +237,7 @@
 					"background": "#2e9599",
 					"foreground": "#111111",
 					"properties": {
-						"time_format": "Mon, Jan _2 15:04:05"
+						"time_format": "Mon _2 15:04:05"
 					}
 				}
 			]
