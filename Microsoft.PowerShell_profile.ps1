@@ -4,6 +4,12 @@ $bytepath = "D:/Games/LoveTests/bytepath/"
 $c350 = "D:/Academic/CMPUT350/Valkyrie/build/bin"
 $notes = "D:/Notes/PersonalNotes/"
 
+function UpOneDirectory {
+	cd ..
+}
+
+Set-Alias -Name .. -Value UpOneDirectory
+
 function NVimHereOrThere ($Target = ".") {
 	nvim $Target
 }
