@@ -7,6 +7,9 @@ mklink /h C:/Users/xxx/AppData/Local/nvim/init.vim Path/To/init.vim
 mklink /h C:/Users/xxx/.vim/plugged/telescope.nvim/lua/telescope/mappings.lua Path/To/telescope_mappings.lua
 mklink /h C:/Users/xxx/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 C:/Users/xxx/dotfiles/Microsoft.PowerShell_profile.ps1
 
+## Symlink in Windows (PWSH):
+new-item -itemtype symboliclink -path C:/Users/xxx/AppData/Local/nvim/coc-settings.json -target Path/To/coc-settings.json
+
 ## Symlink in Linux (WSL):
 ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
 ln -s ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json

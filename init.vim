@@ -133,11 +133,12 @@ inoremap <cr> <cr><c-g>u
 " }}}
 
 " {{{ Mouse Control / Heresy
+command W :w
 nnoremap <leader>fw :w<cr>
 nnoremap <LeftMouse> <LeftMouse><esc>
 inoremap <LeftMouse> <LeftMouse><esc>
-nnoremap <RightMouse> <LeftMouse>i
-inoremap <RightMouse> <esc><LeftMouse>i
+nnoremap <RightMouse> <LeftMouse>a
+inoremap <RightMouse> <esc><LeftMouse>a
 " }}}
 
 " {{{ Telescope settings
