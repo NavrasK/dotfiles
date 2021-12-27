@@ -34,7 +34,7 @@
 						"prefix": "   ",
 						"home_icon": "~",
 						"folder_separator_icon": " \ue216 ",
-						"style": "letter"
+						"style": "folder"
 					}
 				},
 				{
@@ -222,9 +222,6 @@
 						"{{if eq \"Full\" .State.String}}#4caf0f{{end}}"
 					],
 					"properties": {
-						"discharging_icon": " ",
-						"charging_icon": " ",
-						"charged_icon": " ",
 						"postfix": " "
 					}
 				},
@@ -237,7 +234,7 @@
 					"background": "#2e9599",
 					"foreground": "#111111",
 					"properties": {
-						"time_format": "Mon _2 15:04:05"
+						"time_format": "15:04:05"
 					}
 				}
 			]
