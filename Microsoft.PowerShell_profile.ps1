@@ -1,8 +1,8 @@
 # Bookmarks
 $dot = "C:/Users/trail/dotfiles/"
 $bytepath = "D:/Games/LoveTests/bytepath/"
-$c350 = "D:/Academic/CMPUT350/Valkyrie/build/bin"
 $notes = "D:/Notes/PersonalNotes/"
+$byte = "C:/Users/trail/Documents/Projects/Programming/Bytepath/"
 
 function UpOneDirectory {
 	cd ..
@@ -43,9 +43,15 @@ Invoke-Expression (& {
 oh-my-posh --init --shell pwsh --config ~/dotfiles/trail_poshtheme.json | Invoke-Expression
 Import-Module -Name Terminal-Icons
 
-# PSReadLine autocomplete
+# PSReadLine settings
 Import-Module -Name PSReadLine
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -BellStyle Visual
+Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -ViModeIndicator Cursor
+# History List
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -EditMode Windows
+# Up and Down arrow will autocomplete if current command is not empty
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 

@@ -210,22 +210,6 @@
 					}
 				},
 				{
-					"type": "battery",
-					"style": "powerline",
-					"invert_powerline": true,
-					"powerline_symbol": "\uE0B2",
-					"foreground": "#ffffff",
-					"background": "#f36943",
-					"background_templates": [
-						"{{if eq \"Charging\" .State.String}}#4caf50{{end}}",
-						"{{if eq \"Discharging\" .State.String}}#ff5722{{end}}",
-						"{{if eq \"Full\" .State.String}}#4caf0f{{end}}"
-					],
-					"properties": {
-						"postfix": " "
-					}
-				},
-				{
 					"type": "time",
 					"style": "diamond",
 					"invert_powerline": true,

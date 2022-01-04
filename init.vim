@@ -70,6 +70,7 @@ Plug 'ggandor/lightspeed.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'jvgrootveld/telescope-zoxide'
 Plug 'AckslD/nvim-neoclip.lua'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 " }}}
 
@@ -80,28 +81,34 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 set showtabline=2
 
-" Opening terminal window enters insert mode (note: disabled due to issues with coc-powershell)
-" autocmd TermOpen * startinsert
-" Escape escapes terminal mode
-tnoremap <Esc> <C-\><C-n>
-" Quick open terminal as vertical split
-nnoremap <leader>ot <C-w>v:term<cr>
-
 " Activate rainbow parentheses and hex colorizer
 let g:rainbow_active=1
 lua require('colorizer').setup()
+
+" Escape escapes terminal mode
+tnoremap <Esc> <C-\><C-n>
+" Open powershell terminal as vertical split
+nnoremap <leader>ot :vsplit term://pwsh<cr>
+" Open powershell as floating window (prompt)
+let g:floaterm_shell="pwsh"
+let g:floaterm_keymap_toggle='<leader>op'
+
+"<C-w>v:term<cr>
+command W :w
+command Q :qa
+
 " Pressing p in visual mode replaces selected text with " buffer
 vnoremap <leader>p "_dP
 " Refresh current window with latest init.vim
 nnoremap <leader>r :source $MYVIMRC<cr>
-" Ctrl-W + m moves around the current window with HJKL
-nnoremap <C-w><C-m> <cmd>WinShift<cr>
-nnoremap <C-w>m <cmd>WinShift<cr>
-" Leader m toggles maximize for current window
-nnoremap <leader>m :MaximizerToggle!<cr>
-" Toggle open file / undo manager
-nnoremap <F5> :UndotreeToggle<cr>
-nnoremap <C-n> :NERDTreeToggle<cr>
+
+" {{{ Mouse Control / Heresy
+nnoremap <leader>fw :w<cr>
+nnoremap <LeftMouse> <LeftMouse><esc>
+inoremap <LeftMouse> <LeftMouse><esc>
+nnoremap <RightMouse> <LeftMouse>a
+inoremap <RightMouse> <esc><LeftMouse>a
+" }}}
 
 " {{{ Move lines up / down in V, I, and N mode
 nnoremap <A-j> :m .+1<cr>==
@@ -132,14 +139,16 @@ inoremap } }<c-g>u
 inoremap <cr> <cr><c-g>u
 " }}}
 
-" {{{ Mouse Control / Heresy
-command W :w
-nnoremap <leader>fw :w<cr>
-nnoremap <LeftMouse> <LeftMouse><esc>
-inoremap <LeftMouse> <LeftMouse><esc>
-nnoremap <RightMouse> <LeftMouse>a
-inoremap <RightMouse> <esc><LeftMouse>a
-" }}}
+" Ctrl-W + m moves around the current window with HJKL
+nnoremap <C-w><C-m> <cmd>WinShift<cr>
+nnoremap <C-w>m <cmd>WinShift<cr>
+
+" Leader m toggles maximize for current window
+nnoremap <leader>m :MaximizerToggle!<cr>
+
+" Toggle open file / undo manager
+nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <C-n> :NERDTreeToggle<cr>
 
 " {{{ Telescope settings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
