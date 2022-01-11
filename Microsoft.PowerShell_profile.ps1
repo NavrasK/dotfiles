@@ -31,6 +31,14 @@ function TouchySubject ($NewFileName) {
 
 Set-Alias -Name touch -Value TouchySubject
 
+function YTDL ($Target) {
+	if ($Target) {
+		youtube-dl -x --audio-format mp3 $Target
+	} else {
+		Write-Host "FAILED: Enter target URL" -ForegroundColor red
+	}
+}
+
 # Load plugins
 
 # Zoxide
