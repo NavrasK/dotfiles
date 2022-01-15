@@ -3,5 +3,6 @@
 		"redundant-parameter",
 		"different-requires"
 	]
+	"Lua.workspace.preloadFileSize": 1000
 	"powershell.integratedConsole.showOnStartup": false
 }
