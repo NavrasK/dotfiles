@@ -1,8 +1,9 @@
 # Bookmarks
 $dot = "C:/Users/trail/dotfiles/"
-$bytepath = "D:/Games/LoveTests/bytepath/"
+$byte= "D:/Games/LoveTests/bytepath/"
 $notes = "D:/Notes/PersonalNotes/"
-$byte = "C:/Users/trail/Documents/Projects/Programming/Bytepath/"
+$bytepath = "C:/Users/trail/Documents/Projects/Programming/Bytepath/"
+$music = "D:/Music/"
 
 function UpOneDirectory {
 	cd ..
@@ -33,7 +34,7 @@ Set-Alias -Name touch -Value TouchySubject
 
 function YTDL ($Target) {
 	if ($Target) {
-		youtube-dl -x --audio-format mp3 $Target
+		youtube-dl -x -o (Write-Host "$($music)\%(title)s.%(ext)s") --audio-format mp3 $Target
 	} else {
 		Write-Host "FAILED: Enter target URL" -ForegroundColor red
 	}
@@ -62,4 +63,5 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 # Up and Down arrow will autocomplete if current command is not empty
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 

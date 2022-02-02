@@ -33,8 +33,6 @@ set path+=**
 set list lcs=tab:\ \ ,trail:×
 set mouse+=a
 
-command LOVE !love .
-
 " {{{ VimPlugs
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
@@ -71,6 +69,8 @@ Plug 'folke/which-key.nvim'
 Plug 'jvgrootveld/telescope-zoxide'
 Plug 'AckslD/nvim-neoclip.lua'
 Plug 'voldikss/vim-floaterm'
+Plug 'habamax/vim-godot'
+Plug 'mattn/emmet-vim'
 call plug#end()
 " }}}
 
@@ -83,7 +83,8 @@ set showtabline=1
 
 " Activate rainbow parentheses and hex colorizer
 let g:rainbow_active=1
-lua require('colorizer').setup()
+" Use colorizer for all file types, but ignore named colors
+lua require('colorizer').setup({'*';}, {names = false;})
 
 " Escape escapes terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -151,6 +152,7 @@ nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
 
 " {{{ Telescope settings
+
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -160,9 +162,11 @@ lua require('telescope').load_extension('neoclip')
 nnoremap <leader>p <cmd>Telescope neoclip<cr>
 lua require('telescope').load_extension('zoxide')
 nnoremap <leader>cd <cmd>Telescope zoxide list<cr>
+
 " }}}
 
 " {{{ Indent blankline settings
+
 lua << EOF
 require("indent_blankline").setup {
 	use_treesitter = true,
@@ -170,9 +174,11 @@ require("indent_blankline").setup {
 	show_current_context = true,
 }
 EOF
+
 " }}}
 
 " {{{ WhichKey Settings
+
 lua << EOF
 require("which-key").setup {
 	plugins = {
@@ -180,9 +186,11 @@ require("which-key").setup {
 	}
 }
 EOF
+
 " }}}
 
 " {{{ Treesitter / rainbow settings
+
 lua << EOF
 require("nvim-treesitter.configs").setup {
 	rainbow = {
@@ -191,9 +199,11 @@ require("nvim-treesitter.configs").setup {
 	}
 }
 EOF
+
 " }}}
 
 " {{{ COC completion settings
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -221,6 +231,20 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> [e <Plug>(coc-diagnostic-prev)
 nnoremap <silent> ]e <Plug>(coc-diagnostic-next)
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" }}}
+
+" {{{ Language Specific Settings
+
+" Love2D
+command LOVE !love .
+
+" Godot
+let g:godot_executable = "C:\Program Files (x86)\Steam\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe"
+
+" Python
+let g:pyton_recommend_style = 0
+
 " }}}
 
 " Activate safe mode for exrc

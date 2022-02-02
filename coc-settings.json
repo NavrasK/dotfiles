@@ -1,8 +1,18 @@
 {
+	"languageserver": {
+        "godot": {
+            "host": "127.0.0.1",
+            "filetypes": ["gdscript"],
+            "port": 6008
+        }
+    }
 	"Lua.diagnostics.disable": [
 		"redundant-parameter",
-		"different-requires"
-	]
-	"Lua.workspace.preloadFileSize": 1000
+		"different-requires",
+		"unused-local",
+		"lowercase-global"
+	],
+	"Lua.workspace.maxPreload": 2000,
+	"Lua.workspace.preloadFileSize": 1000,
 	"powershell.integratedConsole.showOnStartup": false
 }
