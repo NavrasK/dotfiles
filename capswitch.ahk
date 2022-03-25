@@ -8,4 +8,3 @@ if ( A_PriorKey = "CapsLock" ) {
     Send {Esc}
 }
 return
-

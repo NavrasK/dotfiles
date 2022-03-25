@@ -234,6 +234,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " }}}
 
+" {{{ Emmet settings
+
+" Remap trigger key to ctrl+E (use comma after to expand)
+" let g:user_emmet_leader_key='<C-e>'
+
+" }}}
+
 " {{{ Language Specific Settings
 
 " Love2D

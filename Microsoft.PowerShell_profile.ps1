@@ -18,6 +18,12 @@ function NVimHereOrThere ($Target = ".") {
 Set-Alias -Name vim -Value NVimHereOrThere
 Set-Alias -Name v -Value NVimHereOrThere
 
+function NVimOpenMainWiki () {
+	nvim -c "VimwikiIndex"
+}
+
+Set-Alias -Name vw -Value NVimOpenMainWiki
+
 function TouchySubject ($NewFileName) {
 	if ($NewFileName) {
 		if (!(Test-Path $(-join((Get-Item .).FullName, "\", $NewFileName)) -PathType leaf)) {
@@ -34,7 +40,7 @@ Set-Alias -Name touch -Value TouchySubject
 
 function YTDL ($Target) {
 	if ($Target) {
-		youtube-dl -x -o (Write-Host "$($music)\%(title)s.%(ext)s") --audio-format mp3 $Target
+		youtube-dl -o (Write-Host "$($music)%%(title)s.%%(ext)s") -x --audio-format "mp3" $Target
 	} else {
 		Write-Host "FAILED: Enter target URL" -ForegroundColor red
 	}
@@ -44,8 +50,8 @@ function YTDL ($Target) {
 
 # Zoxide
 Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --hook $hook powershell | Out-String)
+	$hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+	(zoxide init --hook $hook powershell | Out-String)
 })
 
 # Oh My Posh prompt
