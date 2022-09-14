@@ -1,5 +1,7 @@
+;Autoclicker
 toggle = 0
 #MaxThreadsPerHotkey 3
+;CTRL + ALT + S
 ^!s::
 	Toggle := !Toggle
 	While Toggle {
@@ -7,4 +9,3 @@ toggle = 0
 		sleep 50
 	}
 return
-

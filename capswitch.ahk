@@ -29,3 +29,15 @@ NumLock & Numpad6::send {Right}
 NumLock & Numpad7::send {Home}
 NumLock & Numpad8::send {Up}
 NumLock & Numpad9::send {PgUp}
+
+;Autoclicker
+toggle = 0
+#MaxThreadsPerHotkey 3
+;CTRL + ALT + S
+^!s::
+	Toggle := !Toggle
+	While Toggle {
+		click
+		sleep 50
+	}
+return
