@@ -4,6 +4,8 @@ $byte= "D:/Games/LoveTests/bytepath/"
 $notes = "D:/Notes/PersonalNotes/"
 $bytepath = "C:/Users/trail/Documents/Projects/Programming/Bytepath/"
 $music = "D:/Music/"
+$sd = "F:/Programs/stablediffusion/stable-diffusion-webui/"
+$llama = "F:/Programs/llama/oobabooga-windows/"
 
 function UpOneDirectory {
 	cd ..
@@ -39,8 +41,8 @@ function TouchySubject ($NewFileName) {
 Set-Alias -Name touch -Value TouchySubject
 
 function YTDL ($Target) {
-	if ($Target) {
 		youtube-dl -o (Write-Host "$($music)%%(title)s.%%(ext)s") -x --audio-format "mp3" $Target
+			if ($Target) {
 	} else {
 		Write-Host "FAILED: Enter target URL" -ForegroundColor red
 	}
