@@ -40,9 +40,13 @@ function TouchySubject ($NewFileName) {
 
 Set-Alias -Name touch -Value TouchySubject
 
-function YTDLP ($Target) {
+function YTDLP ($Target, $Filename) {
 	if ($Target) {
-		yt-dlp -P $music -x --audio-format "mp3" $Target
+		if ($Filename) {
+			yt-dlp -P $music -x --audio-format "mp3" --output "$Filename.%(ext)s" $Target
+		} else {
+			yt-dlp -P $music -x --audio-format "mp3" --output "%(title)s.%(ext)s" $Target
+		}
 	} else {
 		Write-Host "FAILED: Enter target URL" -ForegroundColor red
 	}
