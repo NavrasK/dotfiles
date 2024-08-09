@@ -6,6 +6,7 @@ $bytepath = "C:/Users/trail/Documents/Projects/Programming/Bytepath/"
 $music = "D:/Music/"
 $sd = "F:/Programs/stablediffusion/stable-diffusion-webui/"
 $llama = "F:/Programs/llama/oobabooga-windows/"
+$abyssiaBot = "F:/Programs/AbyssiaBot/"
 
 function UpOneDirectory {
 	cd ..

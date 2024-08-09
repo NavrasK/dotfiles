@@ -30,6 +30,12 @@ NumLock & Numpad7::send {Home}
 NumLock & Numpad8::send {Up}
 NumLock & Numpad9::send {PgUp}
 
+;VimLike
+RAlt & J::send {Left}
+RAlt & K::send {Up}
+RAlt & L::send {Down}
+RAlt & `;::send {Right}
+
 ;Autoclicker
 toggle = 0
 #MaxThreadsPerHotkey 3
